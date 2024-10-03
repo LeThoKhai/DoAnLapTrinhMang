@@ -13,13 +13,27 @@ public class TCPServer {
                      BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                      PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
 
-                    String inputLine;
-                    StringBuilder result = new StringBuilder();
-                    while ((inputLine = in.readLine()) != null) {
-                        result.append(inputLine.toUpperCase()).append("\n");
+                    // Đọc số lượng chuỗi mà client sẽ gửi
+                    int numberOfStrings = Integer.parseInt(in.readLine());
+
+                    // Nhận mảng chuỗi từ client
+                    String[] receivedStrings = new String[numberOfStrings];
+                    for (int i = 0; i < numberOfStrings; i++) {
+                        receivedStrings[i] = in.readLine();
                     }
 
-                    out.println(result.toString());
+                    // Chuyển chuỗi thành chữ hoa
+                    for (int i = 0; i < receivedStrings.length; i++) {
+                        receivedStrings[i] = receivedStrings[i].toUpperCase();
+                    }
+
+                    // Gửi lại mảng chuỗi đã chuyển thành chữ hoa về client
+                    for (String str : receivedStrings) {
+                        out.println(str);
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         } catch (IOException e) {
