@@ -106,18 +106,19 @@ public class frmNhapXuat extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+String chuoiNhap = txtchuoi.getText();
 
-        // Lấy nội dung từ txtchuoi
-        String chuoiNhap = txtchuoi.getText();
-        
         if (chuoiNhap.isEmpty()) {
-            // Nếu không có chuỗi được nhập, hiển thị thông báo lỗi trong txtketqua
             txtketqua.setText("Vui lòng nhập chuỗi số nguyên trước khi gửi.");
         } else {
             // Gửi dữ liệu đến server và nhận kết quả
             String result = UDPClient.sendData(chuoiNhap);
-            // Hiển thị kết quả nhận được từ server
-            txtketqua.setText(result);
+            // Kiểm tra kết quả trước khi hiển thị
+            if (result.isEmpty()) {
+                txtketqua.setText("Không tìm thấy số nguyên tố.");
+            } else {
+                txtketqua.setText(result);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
