@@ -62,13 +62,16 @@ class ClientHandler extends Thread {
             }
 
             // Gửi lại ma trận đã sắp xếp cho client
-            for (int i = 0; i < rows; i++) {
-                StringBuilder sortedRow = new StringBuilder();
-                for (int j = 0; j < cols; j++) {
-                    sortedRow.append(matrix[i][j]).append(" ");
+                     // Gửi lại ma trận đã sắp xếp về client (làm tròn đến 2 chữ số thập phân)
+                for (int i = 0; i < rows; i++) {
+                    StringBuilder sortedRow = new StringBuilder();
+                    for (int j = 0; j < cols; j++) {
+                        // Làm tròn số đến 2 chữ số thập phân
+                        String formattedNumber = String.format("%.2f", matrix[i][j]);
+                        sortedRow.append(formattedNumber).append(" ");
+                    }
+                    out.println(sortedRow.toString().trim());
                 }
-                out.println(sortedRow.toString().trim());
-            }
 
             socket.close();
         } catch (IOException e) {

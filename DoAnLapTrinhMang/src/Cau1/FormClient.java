@@ -5,6 +5,13 @@
  */
 package Cau1;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ASUS
@@ -27,21 +34,202 @@ public class FormClient extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtsohang = new javax.swing.JTextField();
+        txtsocot = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtmatran = new javax.swing.JTextArea();
+        guibtn = new javax.swing.JButton();
+        btnthoat = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtketqua = new javax.swing.JTextArea();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+
+        jLabel3.setText("jLabel3");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Số hàng");
+
+        jLabel2.setText("Số cột");
+
+        txtsohang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtsohangActionPerformed(evt);
+            }
+        });
+
+        txtmatran.setColumns(20);
+        txtmatran.setRows(5);
+        jScrollPane1.setViewportView(txtmatran);
+
+        guibtn.setText("Gửi");
+        guibtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guibtnActionPerformed(evt);
+            }
+        });
+
+        btnthoat.setText("Thoát");
+        btnthoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnthoatActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setText("Sắp xếp ma trận");
+
+        txtketqua.setColumns(20);
+        txtketqua.setRows(5);
+        jScrollPane2.setViewportView(txtketqua);
+
+        jLabel5.setText("Ma trận");
+
+        jLabel6.setText("Kết quả");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtsohang, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtsocot, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(guibtn, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnthoat, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(154, 154, 154))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(101, 101, 101))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtsohang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtsocot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(guibtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnthoat, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtsohangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsohangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtsohangActionPerformed
+
+    private void guibtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guibtnActionPerformed
+// Lấy thông tin từ các trường nhập liệu
+    String sohang = txtsohang.getText();
+    String socot = txtsocot.getText();
+    String matrixData = txtmatran.getText(); // Dữ liệu ma trận từ JTextArea
+    
+    // Kiểm tra tính hợp lệ của dữ liệu
+    if (sohang.isEmpty() || socot.isEmpty() || matrixData.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ số hàng, số cột và ma trận!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    int rows = 0, cols = 0;
+    try {
+        rows = Integer.parseInt(sohang);
+        cols = Integer.parseInt(socot);
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Số hàng và số cột phải là số nguyên!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    // Kiểm tra tính hợp lệ của ma trận (số phần tử phải đúng với số hàng và số cột)
+    String[] matrixLines = matrixData.split("\n");
+    if (matrixLines.length != rows) {
+        JOptionPane.showMessageDialog(this, "Số dòng của ma trận không khớp với số hàng đã nhập!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    // Kết nối tới server qua TCP
+    try (Socket socket = new Socket("localhost", 1234);
+         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+         PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
+
+        // Gửi số hàng và số cột đến server
+        out.println(rows);
+        out.println(cols);
+
+        // Gửi ma trận đến server (gửi từng dòng một)
+        for (String line : matrixLines) {
+            String[] elements = line.split("\\s+"); // Các phần tử cách nhau bằng dấu khoảng trắng
+            if (elements.length != cols) {
+                JOptionPane.showMessageDialog(this, "Số cột không khớp với số cột đã nhập!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            out.println(line);
+        }
+
+        // Nhận lại ma trận đã sắp xếp từ server
+        StringBuilder sortedMatrix = new StringBuilder();
+        for (int i = 0; i < rows; i++) {
+            sortedMatrix.append(in.readLine()).append("\n");
+        }
+
+        // Hiển thị ma trận đã sắp xếp trong JTextArea matrixOutput
+        txtketqua.setText(sortedMatrix.toString());
+
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, "Lỗi kết nối đến server: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace();
+    }
+        
+    }//GEN-LAST:event_guibtnActionPerformed
+
+    private void btnthoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthoatActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnthoatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +267,19 @@ public class FormClient extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnthoat;
+    private javax.swing.JButton guibtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea txtketqua;
+    private javax.swing.JTextArea txtmatran;
+    private javax.swing.JTextField txtsocot;
+    private javax.swing.JTextField txtsohang;
     // End of variables declaration//GEN-END:variables
 }
