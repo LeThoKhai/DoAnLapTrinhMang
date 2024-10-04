@@ -3,7 +3,7 @@ import java.net.*;
 import java.util.Arrays;
 
 public class TCPServer {
-    private static final int PORT = 1234;
+    private static final int PORT = 4321;
 
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {

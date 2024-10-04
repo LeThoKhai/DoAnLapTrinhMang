@@ -192,7 +192,7 @@ public class FormClient extends javax.swing.JFrame {
     }
     
     // Kết nối tới server qua TCP
-    try (Socket socket = new Socket("localhost", 1234);
+    try (Socket socket = new Socket("localhost", 4321);
          BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
          PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
 
