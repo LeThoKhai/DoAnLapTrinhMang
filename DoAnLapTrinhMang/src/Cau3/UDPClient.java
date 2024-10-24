@@ -1,4 +1,4 @@
-package udpclient;
+package Cau3;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
